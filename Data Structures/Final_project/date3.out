@@ -1,0 +1,34 @@
+
+Am inserat valoarea: 1324
+
+Am inserat valoarea: 12345
+
+Am inserat valoarea: 10000000
+
+Am inserat valoarea: 44000000
+
+Am inserat valoarea: 30000000
+
+Am inserat valoarea: 1
+
+Am inserat valoarea: 2300
+
+Am inserat valoarea: 1200
+
+Am inserat valoarea: 1200
+
+Am inserat valoarea: 12000
+
+Cardinalul este: 9
+Am sters valoarea: 1200
+
+Cardinalul este: 8
+Valoarea minima: 1
+
+Valoarea maxima: 44000000
+
+Valoarea 2300 este in treap [0:nu / 1:da] 1
+
+Succesorul lui 30000000 este 44000000
+Predecesorul lui 30000000 este 10000000
+Al 2-lea element minim este:1324

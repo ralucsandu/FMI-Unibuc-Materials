@@ -1,0 +1,20 @@
+
+Am inserat valoarea: 300
+
+Am inserat valoarea: 600
+
+Am sters valoarea: 300
+
+Am inserat valoarea: 3
+
+Am inserat valoarea: 8000
+
+Valoarea minima: 3
+
+Valoarea maxima: 8000
+
+Succesorul lui 600 este 8000
+Predecesorul lui 600 este 3
+Al 3-lea element minim este:8000
+Cardinalul este: 3
+Valoarea 3 este in treap [0:nu / 1:da] 1

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="proiect sd buun" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/proiect sd buun" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/proiect sd buun" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Unit filename="date1.in" />
+		<Unit filename="date1.out" />
+		<Unit filename="date2.in" />
+		<Unit filename="date2.out" />
+		<Unit filename="date3.in" />
+		<Unit filename="date3.out" />
+		<Unit filename="date4.in" />
+		<Unit filename="date4.out" />
+		<Unit filename="date5.in" />
+		<Unit filename="date5.out" />
+		<Unit filename="date6.in" />
+		<Unit filename="date6.out" />
+		<Unit filename="date7.in" />
+		<Unit filename="date7.out" />
+		<Unit filename="date8.in" />
+		<Unit filename="date8.out" />
+		<Unit filename="date9.in" />
+		<Unit filename="date9.out" />
+		<Unit filename="main.cpp" />
+		<Extensions />
+	</Project>
+</CodeBlocks_project_file>

@@ -1,0 +1,28 @@
+
+Am inserat valoarea: 6000000
+
+Am inserat valoarea: 3423500
+
+Am inserat valoarea: 3435500
+
+Am inserat valoarea: 1220000
+
+Am inserat valoarea: 5745300
+
+Cardinalul este: 5
+Am inserat valoarea: 1220000
+
+Cardinalul este: 5
+Am sters valoarea: 5745300
+
+Am sters valoarea: 1220000
+
+Valoarea minima: 3423500
+
+Valoarea maxima: 6000000
+
+Cardinalul este: 3
+Predecesorul lui 6000000 este 3435500
+Succesorul lui 3435500 este 6000000
+Al 2-lea element minim este:3435500
+Valoarea 1220000 este in treap [0:nu / 1:da] 0

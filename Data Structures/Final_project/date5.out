@@ -1,0 +1,35 @@
+
+Am inserat valoarea: 100000000
+
+Am inserat valoarea: 200000000
+
+Am inserat valoarea: 300000000
+
+Am inserat valoarea: 400000000
+
+Am inserat valoarea: 500000000
+
+Am inserat valoarea: 600000000
+
+Am inserat valoarea: 700000000
+
+Am inserat valoarea: 800000000
+
+Am inserat valoarea: 900000000
+
+Cardinalul este: 9
+Valoarea minima: 100000000
+
+Valoarea maxima: 900000000
+
+Al 4-lea element minim este:400000000
+Al 8-lea element minim este:800000000
+Succesorul lui 100000000 este 200000000
+Predecesorul lui 900000000 este 800000000
+Valoarea 800000000 este in treap [0:nu / 1:da] 1
+
+Am sters valoarea: 800000000
+
+Am sters valoarea: 200000000
+
+Cardinalul este: 7
