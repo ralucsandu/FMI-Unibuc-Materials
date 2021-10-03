@@ -1,0 +1,98 @@
+#Scrieti o functie pentru adunarea unui sir de numere, cu numar variabil de 
+#parametri (parametrii sunt numarul numerelor si apoi numerele) si retur prin
+#stiva. 
+
+.data
+
+.text
+
+adunare: 
+	subu $sp, 4
+	sw $fp, 0($sp)
+	addi $fp, $sp, 4
+
+	subu $sp, 4
+	sw $s0, 0($sp) 			#salvam vechea valoare in registrul $s0
+	li $s0, 0    			#in registrul acesta punem suma
+	
+	subu $sp, 4
+	sw $s1, 0($sp) 			#cu $s1 vom face for-ul
+	li $s1, 0   
+
+	subu $sp, 4
+	sw $s2, 0($sp) 			#$s2=valoare auxiliara pentru numarul curent
+	li $s2, 0   
+
+	subu $sp, 4
+	sw $s3, 0($sp) 			#cu $s3 vom retine numarul de parametri
+	lw $s3, 0($fp)
+
+	subu $sp, 4
+	sw $s4, 0($sp) 			#$s4 = un auxiliar pentru accesarea unui element din fp
+	lw $s4, 0($fp)
+	  
+
+loop: 
+
+	beq $s1, $s3, exit1 		#daca am ajuns la sfarsitul for-ului, ne oprim
+	addi $s1, 1 			#incrementam i ul
+	mul $s2, $s1, 4 
+	add $s4, $fp, $s2
+	lw $s2, 0($s4)
+	add $s0, $s0, $s2
+	j loop
+
+exit1: 
+	#iesirea din functie
+	sw $s0, 0($fp) 			#retur prin stiva
+	lw $s4, -24($fp)
+	lw $s3, -20($fp) 		#echivalent cu lw $s3, 0($sp)
+	lw $s2, -16($fp)
+	lw $s1, -12($fp)
+	lw $s0, -8($fp)
+	lw $fp, -4($fp)
+	addu $sp, 24
+	
+	jr $ra #ma intorc la jal
+
+	
+
+main: 
+
+	li $v0, 5 			#citim numarul de numere
+	syscall
+	move $t0, $v0  			#il mutam in registrul t0
+	li $t1, 0  #folosim t1 ca i
+
+	
+citire: 
+
+	beq $t1, $t0, exit 		#daca suntem la final de vector
+	addi $t1, 1 			#incrementam i ul
+	li $v0, 5
+	syscall #citim din nou un numar
+	subu $sp, 4  			#am facut loc pe stiva
+	sw $v0, 0($sp) 
+	j citire
+
+
+exit:
+	subu $sp, 4  			#am facut loc pe stiva
+	sw $t0, 0($sp) 
+	jal adunare
+
+					#vom folosi $t1 pentru a recupera valoarea intoarsa pe stiva
+
+	lw $t1, 0($sp)  		#primul element din stiva il pun in t1, adica pun suma in t1
+	addu $sp, 4
+	mul $t0, $t0, 4
+	add $sp, $sp, $t0
+	move $a0, $t1
+	li $v0, 1
+	syscall
+	li $v0, 10
+	syscall
+	
+
+exemplu: Pentru n=3 si numerele 1, -4, -5, se va afisa -8
+
