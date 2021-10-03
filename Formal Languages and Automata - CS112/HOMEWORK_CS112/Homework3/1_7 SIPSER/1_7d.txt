@@ -1,0 +1,18 @@
+#
+#alphabet
+#
+Sigma:
+	0
+	1
+	e
+End
+#
+#status
+#
+States:
+	q0,s
+	q1,f
+End
+Transitions:
+                q0,0,q1
+End

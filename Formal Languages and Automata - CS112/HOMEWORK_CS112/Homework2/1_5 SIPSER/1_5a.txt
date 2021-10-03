@@ -1,0 +1,23 @@
+#
+#alphabet
+#
+Sigma:
+	a
+	b
+End
+#
+#status
+#
+States:
+	q0,s,f
+	q1,f
+	q2
+End
+Transitions:
+	q0,a,q1
+	q0,b,q0
+	q1,a,q1
+	q1,b,q2
+	q2,a,q2
+	q2,b,q2
+End

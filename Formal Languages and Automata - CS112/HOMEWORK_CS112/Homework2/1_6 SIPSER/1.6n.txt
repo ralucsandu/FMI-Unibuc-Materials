@@ -1,0 +1,20 @@
+#
+#alphabet
+#
+Sigma:
+	0
+	1
+End
+#
+#status
+#
+States:
+	q0,s
+	q1,f
+End
+Transitions:
+	q0,0,q1
+	q0,1,q1
+	q1,0,q1
+	q1,1,q1
+End

@@ -1,0 +1,37 @@
+States:
+q1 s
+q2
+q3
+q4
+q5
+q_accept f
+q_reject f
+End
+
+Sigma:
+0
+End
+
+Gamma:
+0
+x
+_
+End
+
+Transitions:
+q1 0 q2 _ R
+q1 _ q_reject e R
+q1 x q_reject e R
+q2 x q2 e R
+q2 _ q_accept e R
+q2 0 q3 x R
+q3 _ q5 e L
+q3 x q3 e R
+q3 0 q4 e R
+q4 0 q3 x R
+q4 x q4 e R
+q4 _ q_reject e R
+q5 0 q5 e L
+q5 x q5 e L
+q5 _ q2 e R
+End

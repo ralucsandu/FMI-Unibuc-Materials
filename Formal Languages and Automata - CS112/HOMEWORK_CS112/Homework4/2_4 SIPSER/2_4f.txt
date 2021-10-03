@@ -1,0 +1,16 @@
+Variabile:
+A
+End
+
+Terminali:
+0
+1
+*
+
+end
+
+Relatii:
+A,A
+
+
+End
