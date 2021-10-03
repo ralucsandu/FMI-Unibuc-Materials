@@ -1,0 +1,207 @@
+11.	Formulați în limbaj natural și implementați 5 cereri SQL complexe ce vor utiliza, în ansamblul lor, următoarele elemente: 
+
+• operație join pe cel puțin 4 tabele 
+• filtrare la nivel de linii 
+• subcereri sincronizate în care intervin cel puțin 3 tabele 
+• subcereri nesincronizate în care intervin cel puțin 3 tabele
+• grupări de date, funcții grup, filtrare la nivel de grupuri 
+• ordonări 
+• utilizarea a cel puțin 2 funcții pe șiruri de caractere, 2 funcții pe date calendaristice, a funcțiilor NVL și DECODE, a cel puțin unei expresii CASE 
+• utilizarea a cel puțin 1 bloc de cerere (clauza WITH)
+
+--CERERE 1: 
+---CASE + functia months_between pentru date calendaristice + 
+---functia length pentru siruri de caractere + ordonare descrescatoare
+--Sa se afiseze pentru fiecare postare data la care a fost scrisa, precum si rata popularitatii acesteia.
+--Daca postarea are peste 1000 de aprecieri, atunci ea este considerata populara,
+ --daca are mai mult de 10 aprecieri si mai putin de 1000, atunci ea se condiera 
+--cunoscuta, iar in rest, se considera necunoscuta. Se vor afisa doar postarile
+--mai vechi de un an. 
+
+SELECT continut,data_postare ,
+CASE 
+   WHEN nr_likeuri>1000 THEN 'Postare populara'
+   WHEN nr_likeuri<1000 and nr_likeuri > 10 THEN 'Postare cunoscuta'
+   ELSE 'Postare necunoscuta' END as "Rata popularitate"
+   FROM postare WHERE (nr_likeuri is not null) and round(months_between(sysdate, data_postare))>=12 
+   ORDER by length(continut) desc;
+
+
+--CERERE 2: 
+-------functie pe DATA CALENDARISTICA pentru a afisa luna + 
+-------JOIN pe 4 tabele + SUBCERERE NESINCRONIZATA  + functia LOWER ---pentru siruri de caractere
+--Sa se afiseze codul, luna in care a fost postata, categoria de care apartine si continutul pentru postarea publicata
+--de utilizatorul care lucreaza ca programator. 
+--Afisati, de asemenea, numele, prenumele si username-ul acestui utilizator.  
+SELECT id_postare, to_char(data_postare, 'MON') "LUNA", nume_categorie, continut, 
+        username "NUME UTILIZATOR", prf.nume||' '||prf.prenume "NUME PRENUME"
+FROM postare p, categorie c, profil prf, utilizator u
+WHERE (p.id_categorie = c.id_categorie)AND 
+      (p.id_utilizator = u.id_utilizator)AND
+      (prf.id_utilizator = u.id_utilizator)AND 
+      (u.id_utilizator in (SELECT id_utilizator 
+                           FROM utilizator
+                           WHERE id_job = (SELECT id_job
+                                           FROM loc_munca
+                                           WHERE lower(nume_job) = 'programator')));
+
+INSERT INTO UTILIZATOR VALUES(115, 8, 'moscuuteodoraa', 'imiplacesacant1234', 'admin_grup', sysdate, null, null);
+INSERT INTO PROFIL VALUES(215, 115, 'Moscu', 'Teodora', 'moscuteo@gmail.com', to_date('13-09-2000', 'dd-mm-yyyy'), 'F', '0762118954');
+--utilizatorul are NULL in coloana pentru salariu deoarece abia a fost angajat si nu i se cunoaste inca salariul
+--am introdus aceasta coloana pentru a verifica faptul ca se afiseaza 0 in coloana
+ --pentru SALARIU MAJORAT in cazul in care nu se cunoaste salariul utilizatorului
+
+--CERERE 3:
+----DECODE + ordonare descrescatoare + conversia unui string in data calendaristica +
+----NVL + JOIN pe 3 tabele + functiile UPPER si LOWER
+--Sa se afiseaze numele, prenume, data angajarii(in ordine descrescatoare), salariul initial, precum si salariul dupa majorare
+--pentru utilizatorii angajati inainte de inceputul anului 2021, 
+--care muncesc drept programatori, economisti sau psihologi, stiind ca: 
+--programatorilor le-a fost marit salariul cu 50%, economistilor cu 20%, iar psihologilor cu 25%. 
+
+SELECT p.nume, p.prenume,u.data_angajare,j.nume_job, NVL(u.salariu,0) "SALARIU INAINTE DE MAJORARE", 
+DECODE (lower(j.nume_job), 'programator', NVL(salariu + 0.5*salariu,0 ),
+                           'economist',   NVL(salariu + 0.2*salariu, 0),
+                           'psiholog',    NVL(1.25*salariu, 0)) "SALARIU DUPA MAJORARE"
+FROM utilizator u, profil p, loc_munca j
+WHERE (u.id_utilizator = p.id_utilizator)AND
+      (u.id_job = j.id_job)AND
+      (upper(j.nume_job) = 'PROGRAMATOR' or upper(j.nume_job) = 'ECONOMIST' or upper(j.nume_job) = 'PSIHOLOG')AND
+       u.data_angajare<=to_date('01/01/2021','dd/mm/yyyy')
+ORDER BY u.data_angajare desc;
+
+--CERERE 4:
+---JOIN pe 2 tabele, grupari de date, filtrare la nivel de grup, functii grup, subcerere nesincronizata
+
+--Sa se afiseze codul, numele categoriei si numarul de postari aferente acesteia,
+--pentru categoria din care fac parte cele mai multe postari. 
+
+SELECT id_categorie, nume_categorie, count(id_postare) "NUMAR DE POSTARI AFERENTE"
+FROM categorie JOIN postare USING (id_categorie)
+GROUP BY id_categorie, nume_categorie
+HAVING COUNT(id_postare) = (SELECT max(count(id_postare))
+                            FROM postare
+                            GROUP BY id_categorie);
+                            
+
+
+
+--CERERE 5:
+---clauza WITH + JOIN + AVG + ROUND + functiile TRUNC si SYSDATE pentru date calendaristice + CONCAT
+---COUNT(*) + filtrare la nivel de linie + ordonare crescatoare + SUBCERERI SINCRONIZATE
+
+--Sa se afiseze informatiile despre utilizatorii care castiga mai putin decat media totala a salariilor din baza de date. 
+--Veti afisa numele si prenumele, username-ul, parola, email-ul, numarul de telefon, data angajarii, salariul, locul de munca,
+--numarul de zile de la angajare, salariul mediu al tuturor utilizatorilor cu acelasi loc de munca, 
+--precum si numarul de utilizatori cu acelasi loc de munca. Ordonati rezultatele crescator dupa salariile utilizatorilor.
+WITH AUX AS
+           (SELECT avg(salariu) AS medie_totala_salarii
+            FROM utilizator)
+            
+SELECT concat(concat(p.nume, ' '),p.prenume)"UTILIZATOR", username, parola,p.email, p.nr_telefon, data_angajare, salariu,
+      (SELECT nume_job
+       FROM loc_munca
+       WHERE id_job = u.id_job) "LOC DE MUNCA",
+       
+      (SELECT trunc(sysdate) - u.data_angajare days FROM dual) "ZILE DE LA ANGAJARE",
+      
+      (SELECT round(avg(salariu))
+       FROM utilizator 
+       WHERE id_job = u.id_job) "SALARIU MEDIU PENTRU ACEST JOB",
+       
+      (SELECT count(*)
+       FROM utilizator
+       WHERE id_job = u.id_job) "NUMAR DE UTILIZATORI PE JOB"
+      
+       FROM utilizator u, aux a, profil p
+       WHERE (u.salariu < a.medie_totala_salarii) AND (u.id_utilizator = p.id_utilizator)
+       
+ORDER BY salariu;
+
+
+12. Implementarea a 3 operații de actualizare sau suprimare a datelor utilizând subcereri.
+
+--Stergeti din baza de date locul de munca care nu apartine niciunui utilizator din baza de date. Anulati modificarile.
+
+DELETE FROM LOC_MUNCA
+WHERE id_job in (SELECT id_job
+                 FROM LOC_MUNCA
+                 MINUS
+                 SELECT id_job
+                 FROM utilizator);
+ROLLBACK;                
+--se sterge job-ul cu id-ul 5, deoarece nu exista niciun utilizator cu acel job
+
+
+--Stergeti din baza de date categoria careia nu apartine nicio postare. Pastrati modificarile. 
+
+DELETE FROM CATEGORIE
+WHERE id_categorie in  (SELECT id_categorie
+                        FROM categorie
+                        MINUS
+                        SELECT id_categorie
+                        FROM postare);
+COMMIT;
+
+--Modificati salariul utilizatorului cu id-ul 107, astfel incat acesta sa castige cu 20% mai mult decat 
+--media salariilor utilizatorilor din baza de date. Salvati modificarile!
+UPDATE utilizator
+SET salariu = (SELECT round(avg(salariu)) * 1.2
+               FROM utilizator)
+WHERE id_utilizator = 107;
+COMMIT;
+
+16. Formulați în limbaj natural și implementați în SQL: o cerere ce utilizează operația outerjoin pe minimum 4 tabele și două cereri ce utilizează operația division.
+--DIVISION
+--CEREREA 1
+--Sa se afiseze id-ul, username-ul si parola utilizatorilor care posteaza doar postari apartinand categoriei DIVERTISMENT.
+
+SELECT p.id_utilizator, username, parola
+FROM postare p JOIN utilizator u ON (p.id_utilizator = u.id_utilizator)
+WHERE id_categorie in (SELECT id_categorie 
+                       FROM categorie
+                       WHERE nume_categorie = 'DIVERTISMENT')
+GROUP BY p.id_utilizator, username, parola
+HAVING count(*) = (SELECT count(id_categorie) 
+                    FROM categorie
+                    WHERE nume_categorie = 'DIVERTISMENT')                    
+MINUS 
+SELECT p.id_utilizator, username, parola
+FROM postare p JOIN utilizator u ON (p.id_utilizator = u.id_utilizator)
+WHERE id_categorie not in (SELECT id_categorie 
+                                 FROM categorie
+                                 WHERE nume_categorie = 'DIVERTISMENT');
+
+
+--CEREREA 2
+--Sa se afiseze id-ul, username-ul si parola utilizatorilor care au scris un anunt in cel --putin acelasi grup in care a scris si utilizatorul cu id-ul 115. 
+SELECT s.id_utilizator, username, parola
+FROM scrie s JOIN utilizator u on (s.id_utilizator = u.id_utilizator)
+WHERE id_grup in (SELECT id_grup
+                  FROM scrie
+                  WHERE id_utilizator = 115)
+AND s.id_utilizator != 115
+GROUP BY s.id_utilizator, username, parola
+HAVING COUNT(*) = (SELECT COUNT(id_utilizator)
+                   FROM scrie
+                   WHERE id_utilizator = 115);
+
+
+--OUTER JOIN
+--Sa se afiseze pentru fiecare utilizator care posteaza cel putin o postare, username-ul, locul de 
+--munca, continutul postarii si categoria din care face parte postarea. Daca utilizatorul nu are job, 
+--se va afisa in campul LOC DE MUNCA mesajul "fara job".
+SELECT u.id_utilizator, u.username UTILIZATOR, NVL(j.nume_job, 'fara job') "LOC DE MUNCA", p.continut, c.nume_categorie 
+FROM loc_munca j right outer join utilizator u on (u.id_job = j.id_job)
+     right outer join postare p on (p.id_utilizator = u.id_utilizator)
+     full outer join categorie c on(c.id_categorie = p.id_categorie);
+
+
+
+
+
+
+
+
+
+
