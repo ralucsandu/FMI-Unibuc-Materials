@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <style>
+    .patrat {
+      width: 10px;
+      height: 10px;
+      border: solid #000 2px;
+      margin: 0 5px;
+      position: relative;
+    }
+    body {
+      display: flex;
+      flex-flow: row;
+      height: 200px;
+    }
+    </style>
+  <body>
+  </body>
+  <script>
+      let time = new Date();
+      let n = time.getHours();
+      let colours = ["red", "blue", "green", "purple", "cyan"];
+      for(let i = 0; i < n; i++) {
+        let sq = document.createElement("div");
+        sq.classList.add("patrat");
+        sq.style.background = colours[Math.floor(Math.random() * 5)];
+        sq.onclick = function(e) {
+          this.style.top = "5px";
+          e.stopPropagation();
+        }
+        document.body.appendChild(sq);
+        document.body.onclick = function(e) {
+          e.preventDefault();
+          let sqs = document.getElementsByClassName("patrat");
+          for(let j = 0; j < n; j++) {
+            sqs[j].style.top = "0";
+          }
+        }
+      }
+  </script>
+</html>

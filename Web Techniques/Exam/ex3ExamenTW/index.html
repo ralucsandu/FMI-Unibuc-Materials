@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+	<title>Exercitiul 3</title>
+	<style type="text/css">	
+	</style>
+</head>
+
+<body>
+	<input id="data" type="text">
+  <br>
+  Culoare:
+	<select id="culoare" name="culoare">
+		<option value="red">rosu</option>
+		<option value="green">verde</option>
+		<option value="blue">albastru</option>
+	</select>
+</body>
+
+<script>
+	var data = document.getElementById("data");
+	var selector = document.getElementById("culoare");
+	var today = new Date();
+
+	data.value = today.getDate() + "." + today.getMonth() + "." + today.getFullYear() + " ";
+
+	var selected = localStorage.getItem("selected") || 0;
+	data.style.color = selector.options[selected].value;
+	if(selected != 0)
+		selector.options[selected].selected = true;
+	if(selected == 2) selected = -1;
+	var interval = setInterval(function() {
+		selector.options[++selected].selected = true;
+		data.style.color = selector.options[selected].value;
+		if(selected == selector.options.length-1) {
+			selected = -1;
+		}
+	}, 3000);
+	document.addEventListener("keydown", function(e) {
+		if(e.keyCode == 83) {
+			clearInterval(interval);
+			if(selected == -1) {
+				selected = 2;
+			}
+			localStorage.setItem("selected", selected);
+			selector.onchange = function() {
+				localStorage.setItem("selected", this.selectedIndex);
+			}
+		}
+	});
+
+</script>
