@@ -1,0 +1,92 @@
+@media screen and (min-width: 500px) {
+* {
+margin : 0;
+padding : 0;
+box-sizing : border-box;
+}
+body {
+background-image : url("fundallemn.png");
+overflow-x : hidden;
+}
+b, strong {
+color : rgb(192, 6, 6);
+text-shadow : 0 0 3px rgb(136, 4, 4);
+}
+nav li a {
+text-decoration : none;
+color : rgb(245, 239, 231);
+display : block;
+width : 100%;
+}
+nav ul {
+list-style-type : none;
+}
+nav > ul.meniu {
+height : 100%;
+}
+nav {
+position : fixed;
+top : 1.5%;
+z-index : 20;
+width : 100%;
+height : 2.5em;
+background-color : rgb(156, 16, 16);
+font-size : 1.3em;
+}
+.meniu {
+display : flex;
+flex-direction : row;
+flex-wrap : nowrap;
+justify-content : space-around;
+}
+.meniu > li {
+flex-grow : 0.5;
+height : 2.5em;
+line-height : 2.5em;
+text-align : center;
+flex-basis : auto;
+}
+.meniu > li > ul.submeniu {
+display : none;
+}
+.meniu > li:hover > ul.submeniu {
+display : block;
+background-color : rgb(78, 8, 8);
+}
+.meniu li:hover {
+background-color : rgb(90, 15, 15);
+}
+  #scooter {
+      position: relative;
+      cursor: pointer;
+      width: 20%;
+      top: 10em;
+    }
+  #review
+  {
+    background: rgb(156, 16, 16);
+    padding: 20px;
+    font-size: 20px;
+    color: white;
+  }
+  #text
+  {
+    font-weight: bold;
+    font-size: 1em; 
+  }
+  .a{
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: white;
+    color: red;
+    font-size: 1.8rem;
+  }
+p{
+top:5em;
+text-align : justify;
+font-size : 23px;
+position : relative;
+color : antiquewhite;
+padding : 23px;
+width : 53%;
+}
+}

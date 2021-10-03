@@ -1,0 +1,242 @@
+@media screen and (min-width: 500px) {
+footer {
+text-align : center;
+position : relative;
+top : 18em;
+font-family : "Century Gothic";
+}
+* {
+margin : 0;
+padding : 0;
+box-sizing : border-box;
+}
+}
+@media screen and (min-width: 500px) {
+* {
+margin : 0;
+padding : 0;
+box-sizing : border-box;
+}
+body {
+background-image : url("fundallemn.png");
+overflow-x : hidden;
+}
+b, strong {
+color : rgb(192, 6, 6);
+text-shadow : 0 0 3px rgb(136, 4, 4);
+}
+nav li a {
+text-decoration : none;
+color : rgb(245, 239, 231);
+display : block;
+width : 100%;
+}
+nav ul {
+list-style-type : none;
+}
+nav > ul.meniu {
+height : 100%;
+}
+nav {
+position : fixed;
+top : 1.5%;
+z-index : 20;
+width : 100%;
+height : 2.5em;
+background-color : rgb(156, 16, 16);
+font-size : 1.3em;
+}
+.meniu {
+display : flex;
+flex-direction : row;
+flex-wrap : nowrap;
+justify-content : space-around;
+}
+.meniu > li {
+flex-grow : 0.5;
+height : 2.5em;
+line-height : 2.5em;
+text-align : center;
+flex-basis : auto;
+}
+.meniu > li > ul.submeniu {
+display : none;
+}
+.meniu > li:hover > ul.submeniu {
+display : block;
+background-color : rgb(78, 8, 8);
+}
+.meniu li:hover {
+background-color : rgb(90, 15, 15);
+}
+h2 {
+position : relative;
+top : 3.5em;
+left : 2em;
+color : antiquewhite;
+font-size : 30px;
+text-shadow : 2px 2px 5px rgb(199, 83, 7);
+}
+#pizza > p {
+position : relative;
+top : 6em;
+font-size : 20px;
+color : white;
+padding-left : 63px;
+}
+table, th, td {
+border : white solid 1.5px;
+}
+table {
+width : 90%;
+position : relative;
+top : 8em;
+margin-right : 90px;
+margin-left : auto;
+}
+th {
+height : 65px;
+font-size : 25px;
+background-color : rgb(22, 2, 2, 0.788);
+color : white;
+}
+td {
+text-align : center;
+font-size : 18px;
+color : rgb(255, 255, 255);
+}
+tr:hover {
+background-color : rgb(231, 38, 38, 0.05);
+opacity : 1;
+}
+h3 {
+position : relative;
+top : 6em;
+left : 2em;
+color : rgb(245, 239, 231);
+font-size : 30px;
+text-shadow : 2px 2px 5px rgb(199, 83, 7);
+}
+#container {
+position : relative;
+top : 10em;
+display : flex;
+flex-flow : row wrap;
+justify-content : space-around;
+width : 100%;
+font-size : 17px;
+color : rgb(245, 239, 231);
+text-align : center;
+}
+.imgf {
+width : 33%;
+height : auto;
+}
+.item {
+position : relative;
+width : 33%;
+display : inline;
+flex : 1 0 auto;
+margin : 1em;
+}
+.overlay {
+position : absolute;
+top : 0;
+bottom : 0;
+left : 33%;
+right : 0;
+height : 100%;
+width : 33%;
+opacity : 0;
+transition : 0.5s ease;
+background-color : rgb(156, 16, 16);
+}
+.item:hover .overlay {
+opacity : 1;
+}
+.text {
+color : white;
+font-size : 20px;
+position : absolute;
+top : 50%;
+left : 50%;
+transform : translate(-50%,-50%);
+}
+h4 {
+position : relative;
+top : 6em;
+left : 2em;
+color : rgb(245, 239, 231);
+font-size : 30px;
+text-shadow : 2px 2px 5px rgb(199, 83, 7);
+}
+.preturi {
+column-count : 4;
+column-gap : 20px;
+column-width : 100px;
+position : relative;
+top : 11em;
+left : 5em;
+color : white;
+font-size : 18px;
+}
+
+#animata {
+display : flex;
+flex-direction : row;
+flex-wrap : nowrap;
+margin-left : -800px;
+animation-name : slide;
+animation-duration : 20s;
+animation-delay : 0.5s;
+animation-iteration-count : infinite;
+animation-direction : normal;
+}
+#container-animatie {
+width : 1500px;
+height : 250px;
+margin : auto;
+box-sizing : content-box;
+overflow : hidden;
+position : relative;
+top : 15em;
+}
+}
+@keyframes slide {
+0% {
+margin-left : 0;
+}
+5% {
+margin-left : 0;
+}
+10% {
+margin-left : -400px;
+}
+20% {
+margin-left : -400px;
+}
+30% {
+margin-left : -800px;
+}
+40% {
+margin-left : -800px;
+}
+50% {
+margin-left : -1200px;
+}
+60% {
+margin-left : -1200px;
+}
+70% {
+margin-left : -1600px;
+}
+80% {
+margin-left : -1600px;
+}
+90% {
+margin-left : -2000px;
+}
+100% {
+margin-left : -2000px;
+}
+}

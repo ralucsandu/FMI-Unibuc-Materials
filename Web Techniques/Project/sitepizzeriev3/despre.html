@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Ulala</title>
+	<link href="style.css" rel="stylesheet" type="text/css" />
+	<link href="despre.css" rel="stylesheet" type="text/css" />
+	<link href="despreMic.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="despre.js">
+
+	</script>
+	<link rel="shortcut icon" type="image/png" href="/favicon.png" />
+</head>
+
+<body>
+	<header id="inceput">
+		<div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<nav>
+			<ul class="meniu">
+				<li><a href="despre.html">Despre noi</a></li>
+				<li><a href="pizza-oferte.html">Oferte speciale</a></li>
+				<li><a href="pizza-meniu.html">Meniu</a>
+					<ul class="submeniu">
+						<li><a href="#pizza">Pizza</a></li>
+						<li><a href="#sosuri">Sosuri</a></li>
+						<li><a href="#bauturi">Bauturi</a></li>
+					</ul>
+				</li>
+				<li><a href="joc.html"> Castiga premii</a></li>
+				<li><a href="contact.html">Contact</a>
+				</li>
+			</ul>
+		</nav>
+
+	</header>
+	<main>
+		<div class="name-field">
+			<input id="name-user" type="text" placeholder="Scrieți-vă numele">
+                <button id="submit-name">Trimite</button>
+                <br>
+            </div>
+           <p id="welcome-area" style="font-weight: bold; font-size: 25px; color: white; display: none; position: relative; margin-top:70px; left: 45em;">
+                <span id="welcome-text"></span>
+                <br>
+            </p>
+
+  <section id="despre">
+  <h1><img id="logo" src="PizzeriaUlala.png" alt="logo"></h1>
+  <h2><img id="motto" src="motto.png" alt="motto"></h2>
+    <button id='bt' onclick="document.getElementById('pizza1').src='cutiedeschisa.png'">Deschide cutia</button>
+    <img id="pizza1" src="cutieinchisa.png" alt="prezentare">
+    <p>
+      Născută în Martie 2012, cu o vechime de aproape un deceniu și o 
+     experiență pe măsură, pizzeria Ulala vă invită să vă încântați papilele gustative cu aromele italienești consacrate, precum și cu rețete originale, făcute cu drag de bucătarul nostru principal, chef Mattia Ludano.  Bucurându-ne de susținerea continuă a clienților noștri, începând cu anul 2019 am introdus și serviciul de catering non-stop, astfel încât iubitorii de pizza să o poată savura oricând acasă. În viitorul apropiat vom reveni și cu un meniu de deserturi, pe care cu siguranță îl veți îndrăgi. <b>Comanda minimă </b> trebuie să fie de <b>30 de lei </b> pentru a beneficia de <b>livrare la domiciliu</b>! </p>
+  <video autoplay loop>
+  <source src="PizzaVideo.mp4" type="video/mp4">
+  </video>
+  <div class="reteleSocializare">
+    <ul style="list-style-type:none">
+        <li><i>Căutați-ne pe:</i></li>
+        <li>-Google: www.ulalaPizza.com</li>
+        <li>-Facebook: Pizzeria Ulala</li>
+        <li>-Instagram: @UlalaPizzzza</li>
+      </ul>
+  </div>
+    </section>
+      <footer>
+		<a href="review.html" id="link-top">Review-uri clienți</a>
+	</footer>
+    </main>
+</body>
+</html>

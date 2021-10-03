@@ -1,0 +1,95 @@
+@media screen and (min-width: 500px) {
+* {
+margin : 0;
+padding : 0;
+box-sizing : border-box;
+}
+body {
+background-image : url("fundallemn.png");
+overflow-x : hidden;
+}
+b, strong {
+color : rgb(192, 6, 6);
+text-shadow : 0 0 3px rgb(136, 4, 4);
+}
+h1 {
+position : relative;
+top : 4em;
+}
+h2 {
+position : relative;
+top : 2em;
+left : 5em;
+}
+nav li a {
+text-decoration : none;
+color : rgb(245, 239, 231);
+display : block;
+width : 100%;
+}
+nav ul {
+list-style-type : none;
+}
+nav > ul.meniu {
+height : 100%;
+}
+nav {
+position : fixed;
+top : 1.5%;
+z-index : 20;
+width : 100%;
+height : 2.5em;
+background-color : rgb(156, 16, 16);
+font-size : 1.3em;
+}
+.meniu {
+display : flex;
+flex-direction : row;
+flex-wrap : nowrap;
+justify-content : space-around;
+}
+.meniu > li {
+flex-grow : 0.5;
+height : 2.5em;
+line-height : 2.5em;
+text-align : center;
+flex-basis : auto;
+}
+.meniu > li > ul.submeniu {
+display : none;
+}
+.meniu > li:hover > ul.submeniu {
+display : block;
+background-color : rgb(78, 8, 8);
+}
+.meniu li:hover {
+background-color : rgb(90, 15, 15);
+}
+h3 {
+position : relative;
+top : 18em;
+left : 2em;
+color : rgb(245, 239, 231);
+font-size : 30px;
+text-shadow : 2px 2px 5px rgb(199, 83, 7);
+}
+.dateContact {
+column-count : 3;
+column-gap : 2px;
+position : relative;
+top : 11em;
+font-size : 20px;
+color : white;
+left : 5em;
+}
+.gmap_canvas {
+overflow : hidden;
+background : none !important ;
+height : 358px;
+width : 991px;
+position : relative;
+top : 5em;
+margin-left : auto;
+margin-right : auto;
+}
+}

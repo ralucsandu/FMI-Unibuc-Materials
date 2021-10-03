@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>repl.it</title>
+	<link href="formular.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="formular.js">
+
+	</script>
+</head>
+
+<body>
+	<div class="container">
+		<div class="header">
+			<h2>Creeaza-ti cont chiar acum pentru a putea afla mai usor de ofertele noastre!</h2>
+		</div>
+		<form id="form" class="form">
+			<div class="form-control">
+				<label for="username">Username</label>
+			<input type="text" placeholder="ralucasandu" id="username" />
+
+			<small>Error message</small>
+		</div>
+		<div class="form-control">
+			<label for="username">Email</label>
+			<input type="email" placeholder="raluca.sandu5@s.unibuc.ro" id="email" />
+
+			<small>Error message</small>
+		</div>
+		<div class="form-control">
+			<label for="username">Parola</label>
+			<input type="password" placeholder="parola1" id="password"/>
+			<small>Error message</small>
+		</div>
+		<div class="form-control">
+			<label for="username">Introduceti parola din nou</label>
+			<input type="password" placeholder="parola2" id="password2"/>
+
+			<small>Error message</small>
+		</div>
+		<button on click = "sendData()" >Submit</button>
+	</form>
+</div>
+
+</body>

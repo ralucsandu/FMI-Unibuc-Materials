@@ -1,0 +1,13 @@
+body { 
+background-color : rgb(32, 32, 32);
+}
+
+#canvas1{
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 850px;
+  height: 550px;
+  border: 2px solid black;
+}
