@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="proiect_poo_final" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/proiect_poo_final" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/proiect_poo_final" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Unit filename="ATM.cpp" />
+		<Unit filename="ATM.hpp" />
+		<Unit filename="ATMdeposit.cpp" />
+		<Unit filename="ATMdeposit.hpp" />
+		<Unit filename="ATMextract.cpp" />
+		<Unit filename="ATMextract.hpp" />
+		<Unit filename="Admin.cpp" />
+		<Unit filename="Admin.hpp" />
+		<Unit filename="Cont.cpp" />
+		<Unit filename="Cont.hpp" />
+		<Unit filename="ContDeEconomii.cpp" />
+		<Unit filename="ContDeEconomii.hpp" />
+		<Unit filename="Imprumut.cpp" />
+		<Unit filename="Imprumut.hpp" />
+		<Unit filename="ImprumutCuDobandaFixa.cpp" />
+		<Unit filename="ImprumutCuDobandaFixa.hpp" />
+		<Unit filename="Interfata.hpp" />
+		<Unit filename="MeniuInteractiv.hpp" />
+		<Unit filename="Tranzactie.cpp" />
+		<Unit filename="Tranzactie.hpp" />
+		<Unit filename="Utilizator.cpp" />
+		<Unit filename="Utilizator.hpp" />
+		<Unit filename="admin.in" />
+		<Unit filename="admin.out" />
+		<Unit filename="cont.out" />
+		<Unit filename="imprumut.out" />
+		<Unit filename="main.cpp" />
+		<Unit filename="tranzactie.out" />
+		<Unit filename="utilizator.out" />
+		<Extensions />
+	</Project>
+</CodeBlocks_project_file>
