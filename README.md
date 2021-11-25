@@ -1,2 +1,2 @@
 # FMI-Unibuc-Materials
-Here are some of the projects I made for university.
+Here are some of the projects I worked on for university.
