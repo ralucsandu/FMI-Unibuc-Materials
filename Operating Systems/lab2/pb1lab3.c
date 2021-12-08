@@ -1,5 +1,3 @@
-//Rescrieti programul helloworld din lab1 folosind numai functii sistem
-
 #include <unistd.h>
 #include <string.h>
 #include <stdio.h>
