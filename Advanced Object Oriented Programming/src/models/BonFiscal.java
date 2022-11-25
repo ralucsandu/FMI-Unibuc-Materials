@@ -48,7 +48,7 @@ public class BonFiscal {
         return cititor;
     }
 
-    public void setLoaner(Cititor cititor) {
+    public void setCititor(Cititor cititor) {
         this.cititor = cititor;
     }
 
